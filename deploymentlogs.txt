@@ -1,0 +1,71 @@
+henry@Henriques-MacBook-Pro-2 quiz-v2 % forge script script/QuizFactory.s.sol:DeployQuizFactory --rpc-url $SEPOLIA_RPC_URL --broadcast --verify -vvvv
+[⠊] Compiling...
+No files changed, compilation skipped
+Traces:
+  [868531] DeployQuizFactory::run()
+    ├─ [0] VM::envUint("PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return] 
+    ├─ [831559] → new QuizFactory@0xD1b5a8117858A9D9e45656aC51A59f7053255390
+    │   └─ ← [Return] 4041 bytes of code
+    ├─ [0] VM::stopBroadcast()
+    │   └─ ← [Return] 
+    └─ ← [Stop] 
+
+
+Script ran successfully.
+
+## Setting up 1 EVM.
+==========================
+Simulated On-chain Traces:
+
+  [831559] → new QuizFactory@0xD1b5a8117858A9D9e45656aC51A59f7053255390
+    └─ ← [Return] 4041 bytes of code
+
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 25.986237214 gwei
+
+Estimated total gas used for script: 1241646
+
+Estimated amount required: 0.032265707491814244 ETH
+
+==========================
+
+##### sepolia
+✅  [Success] Hash: 0xe54518a4689bf5c35846c475f7d9158c60dece1c6e0c13f152ca3056bed65f15
+Contract Address: 0xD1b5a8117858A9D9e45656aC51A59f7053255390
+Block: 7262508
+Paid: 0.012243726864537879 ETH (955113 gas * 12.819139583 gwei)
+
+✅ Sequence #1 on sepolia | Total Paid: 0.012243726864537879 ETH (955113 gas * avg 12.819139583 gwei)
+                                                                                                                                         
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+##
+Start verification for (1) contracts
+Start verifying contract `0xD1b5a8117858A9D9e45656aC51A59f7053255390` deployed on sepolia
+Compiler version: 0.8.28
+Optimizations:    200
+
+Submitting verification for [src/QuizFactory.sol:QuizFactory] 0xD1b5a8117858A9D9e45656aC51A59f7053255390.
+Warning: Etherscan could not detect the deployment. (4 tries remaining)
+
+Submitting verification for [src/QuizFactory.sol:QuizFactory] 0xD1b5a8117858A9D9e45656aC51A59f7053255390.
+Warning: Etherscan could not detect the deployment. (3 tries remaining)
+
+Submitting verification for [src/QuizFactory.sol:QuizFactory] 0xD1b5a8117858A9D9e45656aC51A59f7053255390.
+Submitted contract for verification:
+        Response: `OK`
+        GUID: `z9d5m9dvtw2x3qdk5i4cgv3ivan8m3kzpkaryh9xqjy17jvfjh`
+        URL: https://sepolia.etherscan.io/address/0xd1b5a8117858a9d9e45656ac51a59f7053255390
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Warning: Verification is still pending... (7 tries remaining)
