@@ -17,6 +17,8 @@ contract QuizV2Test is Test {
     bytes32 public hashedAnswer;
 
     string public salt = "salt papi";
+    uint8 public GUESS_MULTIPLIER = 2;
+
     QuizV2 public quiz;
     
     MockContract public mockContract;
@@ -75,15 +77,17 @@ contract QuizV2Test is Test {
         
         vm.deal(user, 2 ether);
         vm.prank(user);
-        vm.deal(address(quiz), 4 ether);
+        vm.deal(address(quiz), 5 ether);
 
         quiz.guess(x);
 
         assertTrue(user.balance <= 2 ether);
-        assertTrue(address(quiz).balance >= 4 ether);
+        assertTrue(address(quiz).balance >= 5 ether);
     }
 
     function test_guess_revertsWhenUserAlreadyAnswered() public {
+
+        vm.deal(address(quiz), 0.1 ether);
 
         vm.startPrank(user);
 
@@ -95,25 +99,23 @@ contract QuizV2Test is Test {
     }
 
     function testFuzz_guess_revertsWhenContractHasNotEnoughFunds(uint256 x, uint256 y) public {
-        
         x = bound(x, 1 ether, 100 ether);    
-        y = bound(y, 0, x * 2 - 1);
-        
+        y = bound(y, 0, x - 0.0011 ether );
+
         vm.deal(user, x);
         vm.prank(user);
         vm.deal(address(quiz), y);
-        
+
         vm.expectRevert(QuizV2.NotEnoughCash.selector);
-        
+
         quiz.guess{value: x}(answer);
     }
 
     function testFuzz_ownerWithdrawal_succeeds(uint256 amount) public {
     
         amount = bound(amount, 1, 100);
-        
         vm.deal(address(quiz), amount * 2 ether);
-        
+
         vm.prank(contractOwner);
         
         uint256 initialOwnerBalance = contractOwner.balance;

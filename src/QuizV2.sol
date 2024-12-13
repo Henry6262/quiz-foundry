@@ -40,8 +40,9 @@ contract QuizV2 is Ownable {
 
     // questionn -> should we revert is the questionn is not correct ?
     function guess(string calldata userAnswer) IsNewGuesser(msg.sender) external payable  {
+        uint256 minimumBalance = 0.001 ether; // Set a minimum balance to retain for gas fees
 
-        if (address(this).balance - msg.value < msg.value * GUESS_MULTIPLIER) {
+        if (address(this).balance < msg.value * GUESS_MULTIPLIER + minimumBalance) {
             revert NotEnoughCash();
         }
 
